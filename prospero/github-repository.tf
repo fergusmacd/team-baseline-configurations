@@ -10,7 +10,22 @@ resource "github_repository" "team_baseline_configurations" {
   allow_rebase_merge = true
   auto_init = true
   license_template = "mit"
-  topics = ["propero", "config"]
+  topics = ["prospero", "config", "terraform"]
+}
+
+resource "github_repository" "terraform_modules" {
+  name        = "terraform-modules"
+  description = "Terraform modules repo"
+
+  private = false
+  has_issues = true
+  has_wiki = true
+  allow_merge_commit = false
+  allow_squash_merge = true
+  allow_rebase_merge = true
+  auto_init = true
+  license_template = "mit"
+  topics = ["prospero", "modules", "terraform"]
 }
 
 # Protect the master branch of the repository.
@@ -40,5 +55,12 @@ resource "github_branch_protection" "team_baseline_config" {
 resource "github_team_repository" "team_baseline_config_repo" {
   team_id    = "${github_team.prospero.id}"
   repository = "${github_repository.team_baseline_configurations.name}"
+  permission = "admin"
+}
+
+# main prospero team has admin over own repos
+resource "github_team_repository" "terraform_modules_repo" {
+  team_id    = "${github_team.prospero.id}"
+  repository = "${github_repository.terraform_modules.name}"
   permission = "admin"
 }
