@@ -28,7 +28,7 @@ resource "github_branch_protection" "team_baseline_config" {
     dismiss_stale_reviews = true
     dismissal_teams       = ["${github_team.prospero.slug}"]
     require_code_owner_reviews = false
-    required_approving_review_count = 0
+   # required_approving_review_count = 0
   }
 
   restrictions {
