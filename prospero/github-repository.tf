@@ -14,7 +14,7 @@ resource "github_repository" "team_baseline_configurations" {
 }
 
 # Protect the master branch of the repository.
-resource "github_branch_protection" "tools_config" {
+resource "github_branch_protection" "team_baseline_config" {
   repository     = "${github_repository.team_baseline_configurations.name}"
   branch         = "master"
   enforce_admins = true
@@ -37,7 +37,7 @@ resource "github_branch_protection" "tools_config" {
 }
 
 # main prospero team has admin over own repos
-resource "github_team_repository" "tools_config_repo" {
+resource "github_team_repository" "team_baseline_config_repo" {
   team_id    = "${github_team.prospero.id}"
   repository = "${github_repository.team_baseline_configurations.name}"
   permission = "admin"
