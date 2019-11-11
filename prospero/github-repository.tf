@@ -13,9 +13,9 @@ resource "github_repository" "team_baseline_configurations" {
   topics             = ["prospero", "config", "terraform"]
 }
 
-resource "github_repository" "terraform_modules" {
-  name        = "terraform-modules"
-  description = "Terraform modules repo"
+resource "github_repository" "terraform_github" {
+  name        = "terraform-github"
+  description = "Terraform module that contains everything needed to create github repos"
 
   private            = false
   has_issues         = true
@@ -25,7 +25,7 @@ resource "github_repository" "terraform_modules" {
   allow_rebase_merge = true
   auto_init          = true
   license_template   = "mit"
-  topics             = ["prospero", "modules", "terraform"]
+  topics             = ["prospero", "modules", "terraform", "github"]
 }
 
 # Protect the master branch of the repository.
@@ -34,10 +34,10 @@ resource "github_branch_protection" "team_baseline_config" {
   branch         = "master"
   enforce_admins = true
 
-  #required_status_checks {
-  #  strict   = false
-  #  contexts = ["ci/travis"]
-  #}
+  required_status_checks {
+    strict   = false
+    contexts = ["atlas/mononoke/team-prospero"]
+  }
 
   required_pull_request_reviews {
     dismiss_stale_reviews      = true
@@ -59,8 +59,8 @@ resource "github_team_repository" "team_baseline_config_repo" {
 }
 
 # main prospero team has admin over own repos
-resource "github_team_repository" "terraform_modules_repo" {
+resource "github_team_repository" "terraform_github" {
   team_id    = "${github_team.prospero.id}"
-  repository = "${github_repository.terraform_modules.name}"
+  repository = "${github_repository.terraform_github.name}"
   permission = "admin"
 }
