@@ -4,7 +4,7 @@ terraform {
     organization = "mononoke"
 
     workspaces {
-      name = "team-prospero"
+      name = "organization-admin"
     }
   }
 
