@@ -1,4 +1,4 @@
-resource "github_membership" "membership_mononoke_bot" {
+resource "github_membership" "mononoke_bot" {
   username = "mononoke-bot"
   role     = "admin"
 }
