@@ -3,4 +3,4 @@ Top level organization admin resource creation
 
 ## Does the Following
 * creates github teams
-* creates github members
+* creates/invites github members

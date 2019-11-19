@@ -11,4 +11,5 @@ pre-commit run -a
 ```
 
 ## Directory Structure
- - prospero - files and setup for team prospero (build and tooling)
+* admin - initial set up of teams and members
+* prospero - files and setup for team prospero (build and tooling)
