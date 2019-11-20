@@ -4,7 +4,7 @@ data "terraform_remote_state" "team" {
   config = {
     organization = "mononoke"
     workspaces = {
-      name = "organization-admin"
+      name = "github-admin"
     }
   }
 }

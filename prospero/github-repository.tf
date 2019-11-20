@@ -22,7 +22,7 @@ resource "github_branch_protection" "team_baseline_config" {
   required_status_checks {
     strict = false
     contexts = ["atlas/mononoke/team-prospero",
-    "atlas/mononoke/organization-admin", ]
+    "atlas/mononoke/github-admin", ]
   }
 
   required_pull_request_reviews {
