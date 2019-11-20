@@ -6,6 +6,6 @@ resource "github_team" "prospero" {
 
 resource "github_team" "viola" {
   name        = "viola"
-  description = "Team responsible for building out back end services."
+  description = "Team responsible for building out back end services and web sites."
   privacy     = "closed"
 }
