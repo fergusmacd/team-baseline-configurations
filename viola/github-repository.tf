@@ -26,7 +26,7 @@ resource "github_branch_protection" "events_website" {
 
   required_pull_request_reviews {
     dismiss_stale_reviews      = true
-    dismissal_teams            = ["${data.terraform_remote_state.team.outputs.team_viola}"]
+    dismissal_teams            = ["${data.terraform_remote_state.team.outputs.team_slug_viola}"]
     require_code_owner_reviews = false
     # required_approving_review_count = 0
   }
