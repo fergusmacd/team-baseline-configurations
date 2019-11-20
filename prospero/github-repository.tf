@@ -20,9 +20,9 @@ resource "github_branch_protection" "team_baseline_config" {
   enforce_admins = true
 
   required_status_checks {
-    strict   = false
+    strict = false
     contexts = ["atlas/mononoke/team-prospero",
-                "atlas/mononoke/organization-admin",]
+    "atlas/mononoke/organization-admin", ]
   }
 
   required_pull_request_reviews {
@@ -33,13 +33,13 @@ resource "github_branch_protection" "team_baseline_config" {
   }
 
   restrictions {
-    teams = ["${${data.terraform_remote_state.team.outputs.team_slug_prospero}}"]
+    teams = ["${data.terraform_remote_state.team.outputs.team_slug_prospero}"]
   }
 }
 
 # main prospero team has admin over own repos
 resource "github_team_repository" "team_baseline_config_repo" {
-  team_id    = "${${data.terraform_remote_state.team.outputs.team_id_prospero}}"
+  team_id    = "${data.terraform_remote_state.team.outputs.team_id_prospero}"
   repository = "${github_repository.team_baseline_configurations.name}"
   permission = "admin"
 }
